@@ -218,12 +218,16 @@ internal class MediaPipeFaceTracker(
             buffer.rewind()
             bitmap.copyPixelsFromBuffer(buffer)
         } else {
-            // Row padding present — repack without padding
+            // Row padding present — repack without padding.
+            // Buffer layout: rows 0..N-2 have rowStride bytes each,
+            // last row has only expectedRowBytes (no trailing padding).
             val packed = java.nio.ByteBuffer.allocateDirect(expectedRowBytes * height)
+            val rowData = ByteArray(rowStride)
+            buffer.rewind()
             for (y in 0 until height) {
-                buffer.position(y * rowStride)
-                buffer.limit(y * rowStride + expectedRowBytes)
-                packed.put(buffer)
+                val bytesToRead = if (y < height - 1) rowStride else expectedRowBytes
+                buffer.get(rowData, 0, bytesToRead)
+                packed.put(rowData, 0, expectedRowBytes)
             }
             packed.rewind()
             bitmap.copyPixelsFromBuffer(packed)
