@@ -39,7 +39,7 @@ import kotlin.coroutines.resumeWithException
 internal class MediaPipeFaceTracker(
     private val platformContext: PlatformContext,
     private val config: FaceTrackerConfig,
-) : FaceTracker {
+) : FaceTracker, PreviewableFaceTracker {
 
     private val _trackingData = MutableSharedFlow<FaceTrackingData>(
         replay = 1,
@@ -56,6 +56,11 @@ internal class MediaPipeFaceTracker(
 
     private var faceLandmarker: FaceLandmarker? = null
     private var cameraProvider: ProcessCameraProvider? = null
+    private var previewSurfaceProvider: Preview.SurfaceProvider? = null
+
+    override fun setSurfaceProvider(surfaceProvider: Preview.SurfaceProvider) {
+        previewSurfaceProvider = surfaceProvider
+    }
 
     override suspend fun start() {
         if (_state.value == TrackingState.TRACKING || _state.value == TrackingState.STARTING) return
@@ -135,11 +140,25 @@ internal class MediaPipeFaceTracker(
             }
 
         provider.unbindAll()
-        provider.bindToLifecycle(
-            platformContext.lifecycleOwner,
-            cameraSelector,
-            imageAnalysis,
-        )
+
+        val surfaceProvider = previewSurfaceProvider
+        if (surfaceProvider != null) {
+            val preview = Preview.Builder().build().also {
+                it.surfaceProvider = surfaceProvider
+            }
+            provider.bindToLifecycle(
+                platformContext.lifecycleOwner,
+                cameraSelector,
+                preview,
+                imageAnalysis,
+            )
+        } else {
+            provider.bindToLifecycle(
+                platformContext.lifecycleOwner,
+                cameraSelector,
+                imageAnalysis,
+            )
+        }
     }
 
     private suspend fun getCameraProvider(): ProcessCameraProvider =
