@@ -16,6 +16,7 @@ GitHub Issues と連動したタスクリスト。
 |---|-------|--------|---------|
 | 3 | [One Euro Filter](https://github.com/rioX432/KMP-FaceLink/issues/3) | DONE | 適応的スムージングフィルタ追加 |
 | 9 | [MediaPipe blend shape accuracy](https://github.com/rioX432/KMP-FaceLink/issues/9) | DONE | 低精度パラメータ改善 |
+| 20 | [Landmark overlay alignment](https://github.com/rioX432/KMP-FaceLink/issues/20) | TODO | ランドマーク描画のズレ修正 |
 | 12 | [Thread safety](https://github.com/rioX432/KMP-FaceLink/issues/12) | TODO | 並行処理の安全性強化 |
 
 ## iOS
