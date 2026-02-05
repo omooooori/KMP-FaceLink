@@ -4,11 +4,12 @@ import KMPFaceLink
 struct ContentView: View {
     @StateObject private var viewModel = FaceTrackingViewModel()
     @State private var showBlendShapes = false
+    @State private var showLandmarks = true
 
     var body: some View {
         ZStack {
             // Camera preview background
-            ARCameraView(isRunning: $viewModel.isTracking)
+            ARCameraView(isRunning: $viewModel.isTracking, showLandmarks: $showLandmarks)
                 .ignoresSafeArea()
 
             // Tracking overlay
@@ -17,12 +18,21 @@ struct ContentView: View {
                 HStack {
                     StatusBadge(text: viewModel.statusText, isTracking: viewModel.isTracking)
                     Spacer()
-                    Button {
-                        showBlendShapes.toggle()
-                    } label: {
-                        Image(systemName: showBlendShapes ? "list.bullet.circle.fill" : "list.bullet.circle")
-                            .font(.title2)
-                            .foregroundStyle(.white)
+                    HStack(spacing: 16) {
+                        Button {
+                            showLandmarks.toggle()
+                        } label: {
+                            Image(systemName: showLandmarks ? "face.smiling.fill" : "face.smiling")
+                                .font(.title2)
+                                .foregroundStyle(showLandmarks ? .cyan : .white)
+                        }
+                        Button {
+                            showBlendShapes.toggle()
+                        } label: {
+                            Image(systemName: showBlendShapes ? "list.bullet.circle.fill" : "list.bullet.circle")
+                                .font(.title2)
+                                .foregroundStyle(.white)
+                        }
                     }
                 }
                 .padding()
@@ -52,6 +62,7 @@ struct ContentView: View {
             }
         }
         .animation(.easeInOut(duration: 0.2), value: showBlendShapes)
+        .animation(.easeInOut(duration: 0.2), value: showLandmarks)
     }
 }
 
