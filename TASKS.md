@@ -23,7 +23,7 @@ On completion, update status to `DONE` and close the corresponding GitHub Issue.
 | # | Issue | Status | Summary |
 |---|-------|--------|---------|
 | 11 | [SKIE plugin](https://github.com/rioX432/KMP-FaceLink/issues/11) | DONE | Swift-Kotlin Flow interop |
-| 2 | [iOS sample app](https://github.com/rioX432/KMP-FaceLink/issues/2) | TODO | Xcode project setup |
+| 2 | [iOS sample app](https://github.com/rioX432/KMP-FaceLink/issues/2) | DONE | Xcode project setup |
 
 ## Multi-Tracking (Future)
 

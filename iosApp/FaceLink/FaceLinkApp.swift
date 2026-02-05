@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct iOSApp: App {
+struct FaceLinkApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

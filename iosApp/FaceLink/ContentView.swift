@@ -37,13 +37,20 @@ class FaceTrackingViewModel: ObservableObject {
     private var observeTasks: [Task<Void, Never>] = []
 
     init() {
+        let companion = BlendShapeEnhancerConfig.Companion.shared
         let config = FaceTrackerConfig(
+            smoothingConfig: SmoothingConfig.Ema(alpha: 0.4),
+            enhancerConfig: BlendShapeEnhancerConfig.Default(
+                sensitivityOverrides: companion.defaultSensitivityMap,
+                deadZoneOverrides: companion.defaultDeadZoneMap,
+                geometricBlendWeight: 0.7
+            ),
             enableSmoothing: true,
             smoothingFactor: 0.4,
             enableCalibration: false,
             cameraFacing: .front
         )
-        tracker = FaceTrackerFactoryKt.createFaceTracker(
+        tracker = FaceTrackerFactory_iosKt.createFaceTracker(
             platformContext: PlatformContext(),
             config: config
         )
@@ -117,7 +124,8 @@ class FaceTrackingViewModel: ObservableObject {
     }
 
     deinit {
-        cancelObserveTasks()
+        // Cancel tasks directly without calling @MainActor method
+        observeTasks.forEach { $0.cancel() }
         tracker?.release()
     }
 }
