@@ -24,6 +24,9 @@ On completion, update status to `DONE` and close the corresponding GitHub Issue.
 |---|-------|--------|---------|
 | 11 | [SKIE plugin](https://github.com/rioX432/KMP-FaceLink/issues/11) | DONE | Swift-Kotlin Flow interop |
 | 2 | [iOS sample app](https://github.com/rioX432/KMP-FaceLink/issues/2) | DONE | Xcode project setup |
+| 24 | [Camera preview](https://github.com/rioX432/KMP-FaceLink/issues/24) | TODO | ARKit camera feed display |
+| 25 | [Landmark overlay](https://github.com/rioX432/KMP-FaceLink/issues/25) | TODO | Face landmark visualization |
+| 26 | [Smoothing settings UI](https://github.com/rioX432/KMP-FaceLink/issues/26) | TODO | Real-time smoothing adjustment |
 
 ## Multi-Tracking (Future)
 
