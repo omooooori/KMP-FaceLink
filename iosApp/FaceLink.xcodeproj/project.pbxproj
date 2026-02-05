@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		31FA337BD3314EF51C03A082 /* KMPFaceLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E30E627F1BD37C8649962722 /* KMPFaceLink.framework */; };
 		3EB199A7EAD9DAAD4B4D2903 /* FaceLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA170EB50D5C44020367C5 /* FaceLinkApp.swift */; };
+		76101C9AEBCDC9F0DBAB29F3 /* ARCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2463707E295401686E5B71A2 /* ARCameraView.swift */; };
 		917B618860F53023FA771F8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB79AED323091E2A9D7E304 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D8FF7165758363DBAA0902A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2463707E295401686E5B71A2 /* ARCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraView.swift; sourceTree = "<group>"; };
 		689513EBF1BD917D57E0F1F6 /* FaceLink.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FaceLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EB79AED323091E2A9D7E304 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CEBA170EB50D5C44020367C5 /* FaceLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceLinkApp.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 		80A57F092E991C86ED0CEC14 /* FaceLink */ = {
 			isa = PBXGroup;
 			children = (
+				2463707E295401686E5B71A2 /* ARCameraView.swift */,
 				9EB79AED323091E2A9D7E304 /* ContentView.swift */,
 				CEBA170EB50D5C44020367C5 /* FaceLinkApp.swift */,
 				0D8FF7165758363DBAA0902A /* Info.plist */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76101C9AEBCDC9F0DBAB29F3 /* ARCameraView.swift in Sources */,
 				917B618860F53023FA771F8A /* ContentView.swift in Sources */,
 				3EB199A7EAD9DAAD4B4D2903 /* FaceLinkApp.swift in Sources */,
 			);
