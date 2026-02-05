@@ -3,8 +3,10 @@ import KMPFaceLink
 
 struct ContentView: View {
     @StateObject private var viewModel = FaceTrackingViewModel()
+    @StateObject private var smoothingSettings = SmoothingSettings()
     @State private var showBlendShapes = false
     @State private var showLandmarks = true
+    @State private var showSettings = false
 
     var body: some View {
         ZStack {
@@ -19,6 +21,13 @@ struct ContentView: View {
                     StatusBadge(text: viewModel.statusText, isTracking: viewModel.isTracking)
                     Spacer()
                     HStack(spacing: 16) {
+                        Button {
+                            showSettings = true
+                        } label: {
+                            Image(systemName: "slider.horizontal.3")
+                                .font(.title2)
+                                .foregroundStyle(.white)
+                        }
                         Button {
                             showLandmarks.toggle()
                         } label: {
@@ -63,6 +72,13 @@ struct ContentView: View {
         }
         .animation(.easeInOut(duration: 0.2), value: showBlendShapes)
         .animation(.easeInOut(duration: 0.2), value: showLandmarks)
+        .sheet(isPresented: $showSettings) {
+            SmoothingSettingsView(settings: smoothingSettings) { config in
+                viewModel.updateSmoothing(config)
+                showSettings = false
+            }
+            .presentationDetents([.medium, .large])
+        }
     }
 }
 
@@ -163,6 +179,10 @@ class FaceTrackingViewModel: ObservableObject {
         } else {
             startTracking()
         }
+    }
+
+    func updateSmoothing(_ config: SmoothingConfig) {
+        tracker?.updateSmoothing(config: config)
     }
 
     private func startTracking() {

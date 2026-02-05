@@ -26,7 +26,7 @@ On completion, update status to `DONE` and close the corresponding GitHub Issue.
 | 2 | [iOS sample app](https://github.com/rioX432/KMP-FaceLink/issues/2) | DONE | Xcode project setup |
 | 24 | [Camera preview](https://github.com/rioX432/KMP-FaceLink/issues/24) | DONE | ARKit camera feed display |
 | 25 | [Landmark overlay](https://github.com/rioX432/KMP-FaceLink/issues/25) | DONE | Face landmark visualization |
-| 26 | [Smoothing settings UI](https://github.com/rioX432/KMP-FaceLink/issues/26) | TODO | Real-time smoothing adjustment |
+| 26 | [Smoothing settings UI](https://github.com/rioX432/KMP-FaceLink/issues/26) | DONE | Real-time smoothing adjustment |
 
 ## Multi-Tracking (Future)
 
